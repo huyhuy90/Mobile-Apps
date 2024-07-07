@@ -82,6 +82,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+   signingConfigs {
+        release {
+            keyAlias 'my-key-alias'
+            keyPassword 'my-key-password'
+            storeFile file('D:/Apps/RentalMobil/android/app/android/app/my-release-key.jks')
+            storePassword 'my-store-password'
+        }
+    }
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -100,6 +108,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 }
