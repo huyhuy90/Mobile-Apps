@@ -22,7 +22,7 @@ const Beranda = () => {
           Dapatkan diskon hingga 20% untuk pemesanan pertama Anda!
         </Text>
         <Button
-          icon={<FontAwesome name="car" size={15} color="white" />} // Gunakan FontAwesome di sini
+          icon={<FontAwesome name="car" size={15} color="white" />}
           buttonStyle={styles.button}
           title="Pesan Sekarang"
         />
