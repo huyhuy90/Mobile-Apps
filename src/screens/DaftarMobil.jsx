@@ -1,26 +1,34 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import {Card, Button, Icon} from 'react-native-elements';
+import {useNavigation} from '@react-navigation/native';
 
 const DaftarMobil = () => {
+  const navigation = useNavigation();
+
   const cars = [
     {
       id: 1,
       name: 'Toyota Avanza',
-      image: require('../assets/avanza.jpeg'), // Gambar lokal
+      image: require('../assets/avanza.jpeg'),
       price: 'Rp 300.000/hari',
+      description: 'Toyota Avanza adalah mobil yang nyaman dan ekonomis...',
     },
     {
       id: 2,
       name: 'Honda Civic',
-      image: require('../assets/civic.jpeg'), // Gambar dari URL
+      image: require('../assets/civic.jpeg'),
       price: 'Rp 500.000/hari',
+      description:
+        'Honda Civic adalah mobil dengan desain sporty dan performa tinggi...',
     },
     {
       id: 3,
       name: 'Mitsubishi Pajero',
-      image: require('../assets/pajero.jpeg'), // Gambar dari URL
+      image: require('../assets/pajero.jpeg'),
       price: 'Rp 700.000/hari',
+      description:
+        'Mitsubishi Pajero adalah mobil SUV tangguh dengan kapasitas besar...',
     },
   ];
 
@@ -29,11 +37,7 @@ const DaftarMobil = () => {
       <Text style={styles.title}>Daftar Mobil</Text>
       {cars.map(car => (
         <Card key={car.id} containerStyle={styles.card}>
-          {typeof car.image === 'string' ? (
-            <Image source={{uri: car.image}} style={styles.carImage} />
-          ) : (
-            <Image source={car.image} style={styles.carImage} />
-          )}
+          <Image source={car.image} style={styles.carImage} />
           <Card.Title>{car.name}</Card.Title>
           <Card.Divider />
           <Text style={styles.carPrice}>{car.price}</Text>
@@ -41,6 +45,7 @@ const DaftarMobil = () => {
             icon={<Icon name="info" color="#ffffff" />}
             buttonStyle={styles.button}
             title="Detail"
+            onPress={() => navigation.navigate('Detail', {car})}
           />
         </Card>
       ))}

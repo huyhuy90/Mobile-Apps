@@ -1,15 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import {Card, Button} from 'react-native-elements';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'; // Tambahkan ini
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useNavigation} from '@react-navigation/native';
 
 const Beranda = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require('../assets/rental.jpeg')} // Ganti dengan URL gambar Anda
-        style={styles.banner}
-      />
+      <Image source={require('../assets/rental.jpeg')} style={styles.banner} />
       <Text style={styles.title}>Selamat Datang di Rental Mobil</Text>
       <Text style={styles.subtitle}>
         Temukan mobil impianmu dengan harga terbaik!
@@ -25,6 +25,7 @@ const Beranda = () => {
           icon={<FontAwesome name="car" size={15} color="white" />}
           buttonStyle={styles.button}
           title="Pesan Sekarang"
+          onPress={() => navigation.navigate('Daftar')}
         />
       </Card>
 
@@ -78,12 +79,12 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
     marginBottom: 20,
-    borderRadius: 10, // Membuat sudut kartu melengkung
+    borderRadius: 10,
   },
   cardText: {
     marginBottom: 10,
     textAlign: 'center',
-    color: '#333', // Warna teks yang kontras
+    color: '#333',
   },
   button: {
     backgroundColor: '#841584',
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   featureText: {
     marginLeft: 10,
     fontSize: 16,
-    color: '#333', // Warna teks yang kontras
+    color: '#333',
   },
 });
 
